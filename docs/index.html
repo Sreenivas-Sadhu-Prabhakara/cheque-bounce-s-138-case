@@ -1,0 +1,208 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta http-equiv="Content-Security-Policy" content="default-src 'self'; base-uri 'self'; img-src 'self' data:; style-src 'self'; script-src 'self'; font-src 'self'; form-action 'self'">
+  <title>Cheque bounce section 138 deadline tracker · Open MSME</title>
+  <meta name="description" content="A single-binary tracker for the section 138 deadline cascade: thirty days to serve the demand notice, fifteen days for the drawer to pay, one calendar month to file the complaint — with calendar-correct dates and a printable statutory notice.">
+  <meta name="color-scheme" content="light dark">
+  <meta property="og:title" content="Cheque bounce section 138 deadline tracker and demand notice generator">
+  <meta property="og:description" content="Enter the date on the bank's return memo and every downstream deadline under the Negotiable Instruments Act is computed for you, with the statutory demand notice ready to print.">
+  <meta property="og:type" content="website">
+  <link rel="icon" href="assets/favicon.svg" type="image/svg+xml">
+  <link rel="stylesheet" href="assets/style.css">
+  <link rel="stylesheet" href="assets/accent.css">
+  <script src="assets/theme-init.js"></script>
+</head>
+<body>
+  <header class="topbar">
+    <div class="wrap">
+      <a class="brand" href="https://sreenivas-sadhu-prabhakara.github.io/openmsme/">
+        <span class="dot"></span><b>Open MSME</b><span class="tag">s.138 case clock</span>
+      </a>
+      <span class="sp"></span>
+      <a class="home" href="https://sreenivas-sadhu-prabhakara.github.io/openmsme/">All tools</a>
+      <button class="themer" data-themer type="button">Theme</button>
+    </div>
+  </header>
+
+  <main>
+    <section class="hero">
+      <div class="wrap">
+        <div class="eyebrow">Professional &amp; business services · India</div>
+        <h1>Cheque bounce section 138 deadline tracker and demand notice generator</h1>
+        <p class="lede">A single binary you run on your own machine. Enter the date on the bank's return memo and it computes every downstream deadline under the Negotiable Instruments Act — the thirty days to serve the demand notice, the drawer's fifteen days to pay, the one calendar month to file the complaint — and prints the notice, the schedule and the complaint particulars for you to issue yourself.</p>
+        <div class="who">
+          <span class="pill">Advocates and small litigation firms with cheque-bounce dockets</span>
+          <span class="pill reg">NI Act 1881 · s.138 proviso (a)–(c) · s.142 · Limitation Act 1963</span>
+        </div>
+      </div>
+    </section>
+
+    <div class="wrap">
+      <div class="prose">
+        <div class="note"><b>This is a tracker, not legal advice.</b> It computes and prints; it never sends, serves or files anything, and it has no way to. Confirm the current statutory periods, and the facts and dates of your own case, with an advocate before acting on any date it shows. A wrong date in a limitation calculation is not a cosmetic bug — missing any one of these windows can extinguish the complaint.</div>
+
+        <h2>What it does</h2>
+        <p>Enter one cheque at a time — the cheque and its date and amount, the drawer and the payee, the drawee bank, the bank it was presented through, and the date on the return memo. Only that last date is actually needed to start the clock. The tool then keeps four things in front of you:</p>
+        <ul>
+          <li><b>The whole cascade</b> for each case: the last day the cheque was presentable, the last day to serve the demand notice, the day the drawer's fifteen days expire, the day the cause of action arises and the last day to file the complaint — each with the provision it comes from and the arithmetic that produced it.</li>
+          <li><b>One date to work to.</b> Where the law or the date of service admits two readings, the tool leads with the earlier deadline and shows the outer limit beside it. Filing by the earlier date is in time on either reading.</li>
+          <li><b>Printable documents</b>: the statutory demand notice under clause (b) of the proviso to section 138, the deadline schedule to pin to the file, a complaint particulars sheet for the advocate to draft from, and a case-file checklist of what has to be annexed.</li>
+          <li><b>Reminders you keep yourself</b>: an iCalendar file of the live deadlines, with alarms at fourteen, seven, three and one day, which you download and import into your own calendar.</li>
+        </ul>
+        <p>Across the docket it also shows the nearest deadline anywhere, how many cases fall due within a week, and how many have a window already closed.</p>
+
+        <h2>Who it's for</h2>
+        <p>Solo advocates and small litigation firms in <b>India</b> carrying cheque-bounce matters, and the clerk or junior who keeps the diary. A section 138 docket is a set of rigid, unforgiving, overlapping clocks, and a spreadsheet cannot recompute them when a date of service turns out to be different from the one assumed. It is equally usable by the payee — a trader, a supplier, a lender — who wants to understand the clock before instructing an advocate.</p>
+        <p>It is not a case-management system and it does not draft pleadings. It does one thing: the dates, and the one document that the dates hang on.</p>
+
+        <h2>The rule it implements</h2>
+        <p><b>Section 138 of the Negotiable Instruments Act, 1881</b> makes the dishonour of a cheque for insufficiency of funds an offence — but only if three conditions in the proviso are met, in order:</p>
+        <pre><code>(a)  the cheque was presented to the bank within six months of the
+     date on which it is drawn, or within the period of its validity,
+     whichever is EARLIER;
+
+(b)  the payee or holder in due course made a demand for payment in
+     writing, to the drawer, within THIRTY DAYS of receiving the
+     information from the bank that the cheque was returned unpaid;
+
+(c)  the drawer failed to pay within FIFTEEN DAYS of receiving that
+     notice.</code></pre>
+        <p>The offence is complete on the day after those fifteen days expire unpaid. That day is the cause of action — and <b>section 142(1)(b)</b> then gives:</p>
+        <pre><code>complaint filed within ONE MONTH of the date on which the cause of
+action arises under clause (c) of the proviso to section 138</code></pre>
+        <p><b>One month, not thirty days.</b> Section 3(35) of the General Clauses Act, 1897 makes that a month reckoned by the British calendar, which is 28, 29, 30 or 31 days long. The difference is not academic: a cause of action arising on 1 February 2023 gives a complaint deadline of 1 March, while thirty days computes 3 March — two days out of time, and the complaint is barred. This tool counts calendar months and clamps to the end of the month, so one month from 31 January is 28 or 29 February and never 2 March.</p>
+        <p>The day a period runs <i>from</i> is excluded, under section 9 of the General Clauses Act. The one-month period is reckoned from the day after the fifteen days expire, which is the reckoning in <i>Econ Antri Ltd v. Rom Industries Ltd</i>, (2014) 11 SCC 769 — a three-judge bench affirming <i>Saketh India Ltd v. India Securities Ltd</i>, (1999) 3 SCC 1. Here is the whole chain on one worked example:</p>
+        <pre><code>cheque dated                          01 December 2023
+last day it was payable               01 March 2024      (+3 months)
+return memo dated                     22 December 2023
+last day to serve the demand notice   21 January 2024    (+30 days)
+notice served on the drawer           16 January 2024
+drawer's 15 days expire               31 January 2024    (+15 days)
+cause of action arises                01 February 2024   (the next day)
+LAST DAY TO FILE THE COMPLAINT        29 February 2024   (+1 month,
+                                                          clamped)
+outer limit on the better view        01 March 2024
+civil suit on the cheque              22 December 2026   (+3 years)</code></pre>
+        <p>Two more things the tool does because the law makes them matter. First, <b>service</b>: clause (c) runs from the drawer's <i>receipt</i> of the notice, and until the acknowledgement comes back that date is a guess. If the drawer received it sooner than assumed, the complaint window closes sooner too — so the tool also computes the deadline on the assumption that the notice arrived the day it was posted, and tells you to work to that. Section 27 of the General Clauses Act raises a presumption of service on a properly addressed, prepaid and posted notice, and the drawer may rebut it.</p>
+        <p>Second, <b>what is left when a window has gone</b>. A missed section 138 window is not necessarily a lost debt. A cheque still within its validity can be presented again, and a fresh dishonour gives a fresh cause of action: <i>MSR Leathers v. S. Palaniappan</i>, (2013) 1 SCC 177. The civil suit on the cheque runs for three years under the Limitation Act, 1963. The proviso to section 142(1)(b) lets a court take cognizance after the period on sufficient cause being shown — an indulgence to ask for, never a date to plan around. And section 147 makes the offence compoundable, so a settlement is open at any stage. The tool prints all of that on the file checklist rather than simply saying "too late".</p>
+
+        <h2>Install &amp; run</h2>
+        <p>One binary, standard library only, no dependencies to install and no build step beyond Go itself.</p>
+        <pre><code>git clone https://github.com/sreenivas-sadhu-prabhakara/cheque-bounce-s-138-case.git
+cd cheque-bounce-s-138-case
+
+# run it straight away
+go run .
+
+# or build the binary once and keep it
+go build -o cheque-case .
+./cheque-case
+
+# options
+./cheque-case -addr 127.0.0.1:8080 -data ./cheque-case-data.json</code></pre>
+        <p>Then open <code>http://127.0.0.1:8080/</code> in your browser. It listens on 127.0.0.1, so nothing outside your own machine can reach it. Press Ctrl+C to stop.</p>
+
+        <h2>What it stores</h2>
+        <p>One JSON file, where you tell it to put it — <code>./cheque-case-data.json</code> by default. It holds your own details, the periods you are computing on and your cases, and it is written atomically (temporary file, then rename), so an interrupted save cannot truncate a docket. The file is readable and editable in any text editor, and backing it up means copying one file.</p>
+        <p>There is no account, no server and no telemetry. The tool makes <b>no outbound connections of any kind</b>: the only network traffic is your own browser talking to the binary on 127.0.0.1. It never sends an email, never sends a message and never files anything. The reminders are an iCalendar file you download and import yourself — a tool holding privileged client material has no business reaching out to anyone, and this one has no code that could.</p>
+
+        <h2>Features</h2>
+      </div>
+
+      <div class="featgrid">
+        <div class="feat">
+          <h3>The cascade off one date</h3>
+          <p>Enter the return memo date and every downstream deadline appears, each labelled with the provision it comes from and the arithmetic behind it. Nothing is a bare date you have to take on trust.</p>
+        </div>
+        <div class="feat">
+          <h3>Calendar-correct, deliberately</h3>
+          <p>Calendar months, not thirty days. Month-end clamping, so one month from 31 January is 28 or 29 February. Leap days counted. Tested at the day before, the day of and the day after every window.</p>
+        </div>
+        <div class="feat">
+          <h3>Safe where the law is unsettled</h3>
+          <p>Where two readings of a period are defensible, the earlier deadline leads and the outer limit sits beside it. The tool never hands you the optimistic date.</p>
+        </div>
+        <div class="feat">
+          <h3>Unproved service handled honestly</h3>
+          <p>Until the acknowledgement arrives, the tool shows the earliest the complaint window can possibly close — the date that is in time whatever the court later finds about service.</p>
+        </div>
+        <div class="feat">
+          <h3>The statutory demand notice</h3>
+          <p>The clause (b) notice, with the particulars of the cheque and the dishonour, the demand for exactly the cheque amount in figures and in words, and the fifteen-day warning — plus a checklist of what sinks notices.</p>
+        </div>
+        <div class="feat">
+          <h3>Complaint particulars</h3>
+          <p>The parties, the cheque, the limitation working line by line, the jurisdiction limb under s.142(2), the relief including s.143A interim compensation, and the annexures. For your advocate to draft from.</p>
+        </div>
+        <div class="feat">
+          <h3>Reminders in your own diary</h3>
+          <p>An iCalendar file of the live deadlines with alarms at fourteen, seven, three and one day. You download it and import it. Nothing is sent to you or by you.</p>
+        </div>
+        <div class="feat">
+          <h3>The periods are yours to set</h3>
+          <p>Every statutory period is one named constant and one form field. The notice period was fifteen days before 2002; set it and the whole docket recomputes, and every document says which figures it used.</p>
+        </div>
+        <div class="feat">
+          <h3>A way back from a missed window</h3>
+          <p>Re-presentation while the cheque is still valid, the three-year civil suit, condonation under the proviso to s.142(1)(b), compounding under s.147 — on the page, with the dates, when you need them most.</p>
+        </div>
+        <div class="feat">
+          <h3>Position on any date</h3>
+          <p>Compute the whole docket as on a past or future date, to check where a file stood when something happened or where it will stand next month.</p>
+        </div>
+        <div class="feat">
+          <h3>Weekend deadlines flagged</h3>
+          <p>A deadline that falls on a Saturday or Sunday is marked but never moved. Section 4 of the Limitation Act exists; relying on it is not a plan.</p>
+        </div>
+        <div class="feat">
+          <h3>Yours, offline</h3>
+          <p>One binary, one local JSON file, no account and no outbound connections. It works on a machine that has never seen the internet, which is where privileged material belongs.</p>
+        </div>
+      </div>
+
+      <div class="prose">
+        <h2>How you would use it</h2>
+        <ol class="steps">
+          <li>Run the binary and enter your own name, enrolment number and office details once.</li>
+          <li>Check the periods against the Act as it stands today. They are the figures in force at the time of writing, and they are yours to correct.</li>
+          <li>The day a return memo arrives, open the tool and enter the cheque and the memo date. The deadline to serve the notice appears immediately.</li>
+          <li>Print the demand notice, read it against the file, put it on your letterhead and send it by registered post with acknowledgement due and by speed post. Keep the receipts.</li>
+          <li>Record the date it went out. Download the calendar file and import it, so the complaint deadline is in your diary with alarms before it.</li>
+          <li>When the acknowledgement comes back, record the real date of service. Every date after it recomputes, and the tool stops guessing.</li>
+          <li>Print the complaint particulars and the file checklist, collect the annexures, and file well before the date the tool tells you to work to.</li>
+        </ol>
+
+        <details class="assumptions">
+          <summary>Assumptions &amp; figures</summary>
+          <ul>
+            <li><b>Demand notice: 30 days</b> — s.138 proviso (b), counted from the receipt of the bank's information about the return. It was fifteen days until the Negotiable Instruments (Amendment and Miscellaneous Provisions) Act, 2002.</li>
+            <li><b>Drawer's time to pay: 15 days</b> — s.138 proviso (c), counted from the drawer's receipt of the notice.</li>
+            <li><b>Complaint: 1 calendar month</b> — s.142(1)(b), from the date the cause of action arises. A month of the British calendar under s.3(35) of the General Clauses Act, 1897, not thirty days.</li>
+            <li><b>Cheque validity: 3 months</b> — Reserve Bank of India directions effective 1 April 2012, which reduced the validity of a cheque, draft, pay order or banker's cheque from six months to three.</li>
+            <li><b>Presentation: 6 months</b> — the other limb of s.138 proviso (a). The proviso takes whichever of the two expires first, so for an ordinary cheque the three-month validity governs.</li>
+            <li><b>Assumed days in the post: 7</b> — <b>not a statutory period.</b> It is this tool's working assumption for a notice sent by registered or speed post while the date of actual receipt is unknown, and it is replaced by the real date the moment you record it.</li>
+            <li><b>Civil suit: 3 years</b> — Limitation Act, 1963. The article that applies turns on the instrument and the pleading; confirm it with your advocate.</li>
+            <li><b>Sentence and compensation:</b> s.138 — up to two years' imprisonment, or a fine up to twice the cheque amount, or both. s.143A — interim compensation up to 20% of the cheque amount. s.148 — a deposit of at least 20% on an appeal against conviction. s.147 — the offence is compoundable.</li>
+            <li>Every one of these is a named constant in <code>internal/s138</code> and a field in the tool. Change one and the whole docket recomputes, and every printed document states the figures it used.</li>
+            <li>Where a date is unrecorded the tool says so rather than guessing. Where a date is recorded in an impossible order — a notice served before it was posted — it refuses the entry, because a deadline computed from a mistyped date looks exactly as authoritative as a correct one.</li>
+          </ul>
+        </details>
+
+        <div class="note"><b>Scope and accuracy.</b> This tool is a deadline tracker. It is not legal advice, it is not a substitute for an advocate, and the dates it shows are computed from what you typed into it. Whether an offence under section 138 is made out turns on facts no tracker can see: whether the cheque was for a legally enforceable debt, whether the notice was properly addressed and served, whether the drawer is a company and who was in charge of it, which court has jurisdiction. The statutory periods above are the figures in force at the time of writing and can change. <b>Confirm the current periods and your own facts with an advocate, and file with days to spare rather than on the last day.</b> Nothing is ever sent, served or filed by this tool.</div>
+      </div>
+    </div>
+  </main>
+
+  <footer class="foot">
+    <div class="wrap">
+      <span>Open MSME · open-source tool for MSMEs in India &amp; the Philippines · MIT</span>
+      <span><a href="https://sreenivas-sadhu-prabhakara.github.io/openmsme/">All tools</a></span>
+    </div>
+  </footer>
+
+  <script src="assets/ui.js"></script>
+</body>
+</html>

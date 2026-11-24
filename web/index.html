@@ -1,0 +1,371 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta http-equiv="Content-Security-Policy" content="default-src 'self'; base-uri 'self'; img-src 'self' data:; style-src 'self'; script-src 'self'; font-src 'self'; form-action 'self'; connect-src 'self'">
+  <title>Cheque bounce section 138 deadline tracker · Open MSME</title>
+  <meta name="description" content="Track the section 138 deadline cascade on every dishonoured cheque: the thirty days for the demand notice, the drawer's fifteen days, and the one calendar month to file the complaint.">
+  <meta name="color-scheme" content="light dark">
+  <link rel="icon" href="assets/favicon.svg" type="image/svg+xml">
+  <link rel="stylesheet" href="assets/style.css">
+  <link rel="stylesheet" href="assets/accent.css">
+  <script src="assets/theme-init.js"></script>
+</head>
+<body>
+  <header class="topbar">
+    <div class="wrap">
+      <span class="brand">
+        <span class="dot"></span><b>Open MSME</b><span class="tag">s.138 case clock</span>
+      </span>
+      <span class="sp"></span>
+      <span class="tag">running on this machine</span>
+      <button class="themer" data-themer type="button">Theme</button>
+    </div>
+  </header>
+
+  <main>
+    <section class="hero">
+      <div class="wrap">
+        <div class="eyebrow">Professional &amp; business services · India</div>
+        <h1>Cheque bounce section 138 deadline tracker and demand notice generator</h1>
+        <p class="lede">Enter the date on the bank's return memo and every downstream deadline is computed for you: the thirty days to serve the demand notice, the drawer's fifteen days to pay, and the one calendar month to file the complaint. Then print the notice and the schedule and issue them yourself.</p>
+        <div class="who">
+          <span class="pill">Advocates and small litigation firms with cheque-bounce dockets</span>
+          <span class="pill reg">NI Act 1881 · s.138 proviso (a)–(c) · s.142 · Limitation Act 1963</span>
+        </div>
+      </div>
+    </section>
+
+    <div class="wrap">
+      <p class="note" id="message" role="alert" hidden></p>
+
+      <section class="card">
+        <h2>The docket</h2>
+        <div class="result-primary">
+          <div class="k" id="nextLabel">Nearest deadline in the docket</div>
+          <div class="v" id="nextDue">—</div>
+          <div class="sub" id="nextSub">No cases on record yet. Add the first one below.</div>
+        </div>
+        <table class="breakdown">
+          <tbody>
+            <tr><td>Cases on record</td><td class="num" id="sumCases">0</td></tr>
+            <tr class="sub"><td>Due within a week</td><td class="num" id="sumUrgent">0</td></tr>
+            <tr class="sub"><td>With a window closed</td><td class="num" id="sumBarred">0</td></tr>
+            <tr class="sub"><td>Closed or paid</td><td class="num" id="sumClosed">0</td></tr>
+          </tbody>
+        </table>
+        <div class="field">
+          <label for="asOf">Compute the cascade as on <span class="hint">to check a position on a past or future date</span></label>
+          <input type="date" id="asOf">
+        </div>
+      </section>
+
+      <div class="cols calc">
+        <section class="card" id="formCard">
+          <h2 id="formTitle">Add a dishonoured cheque</h2>
+          <form id="caseForm" novalidate>
+            <div class="row2">
+              <div class="field">
+                <label for="ref">Your file reference</label>
+                <div class="inp"><input type="text" id="ref" name="ref" autocomplete="off" required></div>
+              </div>
+              <div class="field">
+                <label for="amount">Cheque amount <span class="hint">₹</span></label>
+                <div class="inp"><input type="number" id="amount" name="amount" min="0" step="0.01" inputmode="decimal" required></div>
+              </div>
+            </div>
+
+            <div class="row2">
+              <div class="field">
+                <label for="chequeNo">Cheque number</label>
+                <div class="inp"><input type="text" id="chequeNo" autocomplete="off" required></div>
+              </div>
+              <div class="field">
+                <label for="chequeDate">Date on the cheque <span class="hint">fixes the validity</span></label>
+                <input type="date" id="chequeDate">
+              </div>
+            </div>
+
+            <div class="field">
+              <label for="drawerName">Drawer <span class="hint">who signed the cheque</span></label>
+              <div class="inp"><input type="text" id="drawerName" autocomplete="off" required></div>
+            </div>
+            <div class="field">
+              <label for="drawerAddress">Drawer's address <span class="hint">as on the cheque and the bank's records</span></label>
+              <div class="inp"><input type="text" id="drawerAddress" autocomplete="off"></div>
+            </div>
+
+            <div class="field">
+              <label for="payeeName">Payee <span class="hint">your client, the complainant</span></label>
+              <div class="inp"><input type="text" id="payeeName" autocomplete="off"></div>
+            </div>
+            <div class="field">
+              <label for="payeeAddress">Payee's address</label>
+              <div class="inp"><input type="text" id="payeeAddress" autocomplete="off"></div>
+            </div>
+
+            <div class="field">
+              <label for="consideration">What the cheque was given for <span class="hint">the debt or liability it was to discharge</span></label>
+              <div class="inp"><input type="text" id="consideration" autocomplete="off"></div>
+            </div>
+
+            <div class="row2">
+              <div class="field">
+                <label for="draweeBank">Drawee bank <span class="hint">the drawer's bank</span></label>
+                <div class="inp"><input type="text" id="draweeBank" autocomplete="off"></div>
+              </div>
+              <div class="field">
+                <label for="draweeBranch">Branch</label>
+                <div class="inp"><input type="text" id="draweeBranch" autocomplete="off"></div>
+              </div>
+            </div>
+            <div class="row2">
+              <div class="field">
+                <label for="collectingBank">Presented through <span class="hint">the payee's bank — fixes jurisdiction</span></label>
+                <div class="inp"><input type="text" id="collectingBank" autocomplete="off"></div>
+              </div>
+              <div class="field">
+                <label for="collectingBranch">Branch</label>
+                <div class="inp"><input type="text" id="collectingBranch" autocomplete="off"></div>
+              </div>
+            </div>
+
+            <div class="row2">
+              <div class="field">
+                <label for="presentedDate">Presented on</label>
+                <input type="date" id="presentedDate">
+              </div>
+              <div class="field">
+                <label for="memoDate">Return memo dated <span class="hint">the clock starts here</span></label>
+                <input type="date" id="memoDate" required>
+              </div>
+            </div>
+            <div class="row2">
+              <div class="field">
+                <label for="memoReceivedDate">Bank's information received on <span class="hint">leave blank if the same day</span></label>
+                <input type="date" id="memoReceivedDate">
+              </div>
+              <div class="field">
+                <label for="memoReason">Reason on the memo</label>
+                <div class="inp"><input type="text" id="memoReason" autocomplete="off"></div>
+              </div>
+            </div>
+
+            <div class="row2">
+              <div class="field">
+                <label for="noticeSentDate">Demand notice despatched</label>
+                <input type="date" id="noticeSentDate">
+              </div>
+              <div class="field">
+                <label for="noticeServedDate">Received by the drawer <span class="hint">once the A/D card proves it</span></label>
+                <input type="date" id="noticeServedDate">
+              </div>
+            </div>
+            <div class="field">
+              <label for="noticeMode">How the notice went <span class="hint">registered post with A/D, speed post, courier</span></label>
+              <div class="inp"><input type="text" id="noticeMode" autocomplete="off"></div>
+            </div>
+
+            <div class="row2">
+              <div class="field">
+                <label for="paidDate">Drawer paid in full on</label>
+                <input type="date" id="paidDate">
+              </div>
+              <div class="field">
+                <label for="complaintFiledDate">Complaint filed on</label>
+                <input type="date" id="complaintFiledDate">
+              </div>
+            </div>
+            <div class="row2">
+              <div class="field">
+                <label for="courtName">Court</label>
+                <div class="inp"><input type="text" id="courtName" autocomplete="off"></div>
+              </div>
+              <div class="field">
+                <label for="caseNo">Case number</label>
+                <div class="inp"><input type="text" id="caseNo" autocomplete="off"></div>
+              </div>
+            </div>
+            <div class="field">
+              <label for="notes">Notes</label>
+              <div class="inp"><input type="text" id="notes" autocomplete="off"></div>
+            </div>
+
+            <div class="btnrow">
+              <button class="btn primary" type="submit" id="save">Add the case</button>
+              <button class="btn ghost" type="button" id="cancelEdit" hidden>Cancel</button>
+              <button class="btn ghost" type="reset" id="clearForm">Clear</button>
+            </div>
+          </form>
+        </section>
+
+        <section class="card sticky" id="cascadeCard">
+          <h2 id="cascadeTitle">The cascade</h2>
+          <p class="assumptions" id="cascadeEmpty">Pick a case below, or add one, and every deadline in the cascade appears here with the section it comes from and the arithmetic behind it.</p>
+          <div id="cascadeBody" hidden>
+            <div class="result-primary">
+              <div class="k" id="caseStage">—</div>
+              <div class="v" id="caseNextDue">—</div>
+              <div class="sub" id="caseNextAction">—</div>
+            </div>
+            <table class="breakdown">
+              <thead>
+                <tr>
+                  <th scope="col">Step</th>
+                  <th scope="col">Last day</th>
+                </tr>
+              </thead>
+              <tbody id="cascadeRows"></tbody>
+            </table>
+            <div id="caseFlags"></div>
+            <div class="btnrow" id="caseDocs"></div>
+          </div>
+        </section>
+      </div>
+
+      <section class="card">
+        <h2>Cases on the clock</h2>
+        <table class="breakdown" id="caseTable">
+          <thead>
+            <tr>
+              <th scope="col">File</th>
+              <th scope="col">Stage</th>
+              <th scope="col">Next deadline</th>
+              <th scope="col">Actions</th>
+            </tr>
+          </thead>
+          <tbody id="caseRows"></tbody>
+        </table>
+        <p class="assumptions" id="emptyNote">Add your first case on the left. Only the return memo date is needed to start the clock.</p>
+      </section>
+
+      <section class="card" id="docCard" hidden>
+        <h2 id="docTitle">Document</h2>
+        <p class="assumptions">Nothing has been sent, served or filed. Read it, settle it, put it on your letterhead and issue it yourself.</p>
+        <pre id="docText"></pre>
+        <div class="btnrow">
+          <button class="btn primary" type="button" id="printDoc">Print</button>
+          <button class="btn ghost" type="button" id="copyDoc">Copy text</button>
+          <button class="btn ghost" type="button" id="closeDoc">Close</button>
+        </div>
+      </section>
+
+      <section class="card">
+        <h2>Your details and the periods</h2>
+        <form id="settingsForm" novalidate>
+          <div class="row2">
+            <div class="field">
+              <label for="advocate">Your name</label>
+              <div class="inp"><input type="text" id="advocate" autocomplete="off"></div>
+            </div>
+            <div class="field">
+              <label for="enrolment">Enrolment number</label>
+              <div class="inp"><input type="text" id="enrolment" autocomplete="off"></div>
+            </div>
+          </div>
+          <div class="row2">
+            <div class="field">
+              <label for="firm">Firm</label>
+              <div class="inp"><input type="text" id="firm" autocomplete="off"></div>
+            </div>
+            <div class="field">
+              <label for="officeAddress">Office address</label>
+              <div class="inp"><input type="text" id="officeAddress" autocomplete="off"></div>
+            </div>
+          </div>
+          <div class="row2">
+            <div class="field">
+              <label for="phone">Phone</label>
+              <div class="inp"><input type="text" id="phone" autocomplete="off"></div>
+            </div>
+            <div class="field">
+              <label for="email">Email</label>
+              <div class="inp"><input type="text" id="email" autocomplete="off" spellcheck="false"></div>
+            </div>
+          </div>
+
+          <h2>The statutory periods</h2>
+          <p class="assumptions">These are the figures in force, each from the provision beside it. Change one only if the law has moved or the instrument carried a validity period of its own — every date in the docket recomputes, and every printed document says which figures it used.</p>
+          <div class="row2">
+            <div class="field">
+              <label for="noticeDays">Demand notice <span class="hint">days · s.138(b)</span></label>
+              <div class="inp"><input type="number" id="noticeDays" min="1" max="365" step="1" inputmode="numeric"></div>
+            </div>
+            <div class="field">
+              <label for="paymentDays">Drawer's time to pay <span class="hint">days · s.138(c)</span></label>
+              <div class="inp"><input type="number" id="paymentDays" min="1" max="365" step="1" inputmode="numeric"></div>
+            </div>
+          </div>
+          <div class="row2">
+            <div class="field">
+              <label for="complaintMonths">Complaint <span class="hint">calendar months · s.142(1)(b)</span></label>
+              <div class="inp"><input type="number" id="complaintMonths" min="1" max="60" step="1" inputmode="numeric"></div>
+            </div>
+            <div class="field">
+              <label for="chequeValidityMonths">Cheque validity <span class="hint">months · RBI</span></label>
+              <div class="inp"><input type="number" id="chequeValidityMonths" min="1" max="60" step="1" inputmode="numeric"></div>
+            </div>
+          </div>
+          <div class="row2">
+            <div class="field">
+              <label for="statutoryPresentationMonths">Presentation <span class="hint">months · s.138(a)</span></label>
+              <div class="inp"><input type="number" id="statutoryPresentationMonths" min="1" max="120" step="1" inputmode="numeric"></div>
+            </div>
+            <div class="field">
+              <label for="deemedServiceDays">Assumed days in the post <span class="hint">not statutory</span></label>
+              <div class="inp"><input type="number" id="deemedServiceDays" min="1" max="90" step="1" inputmode="numeric"></div>
+            </div>
+          </div>
+          <div class="field">
+            <label for="civilSuitYears">Civil suit limitation <span class="hint">years · Limitation Act 1963</span></label>
+            <div class="inp"><input type="number" id="civilSuitYears" min="1" max="30" step="1" inputmode="numeric"></div>
+          </div>
+          <p class="assumptions" id="periodState"></p>
+          <div class="btnrow">
+            <button class="btn primary" type="submit">Save</button>
+            <button class="btn ghost" type="button" id="resetPeriods">Reset to the statutory figures</button>
+          </div>
+        </form>
+      </section>
+
+      <section class="card">
+        <h2>How the cascade works</h2>
+        <div class="prose">
+          <p><b>A wrong date here is the worst thing this tool could do to you.</b> Every window below is a condition of the offence or a period of limitation. Miss one and the complaint is gone, however good the rest of the case is. So the arithmetic is calendar-correct — short months, leap days, month ends — and wherever the law or a date of service is genuinely uncertain, the tool reports the <i>earlier</i> of the defensible deadlines as the one to work to, with the outer limit beside it.</p>
+          <ol class="steps">
+            <li><b>Presentation — s.138 proviso (a).</b> The cheque must reach the bank within six months of its date or within its validity, whichever expires first. Since the Reserve Bank reduced cheque validity to three months in 2012, the three months is normally the operative limit.</li>
+            <li><b>Demand notice — s.138 proviso (b).</b> A written demand for the cheque amount must be given to the drawer within thirty days of the payee receiving the bank's information about the return. The tool counts from the memo date, which is the earliest that window can close.</li>
+            <li><b>The drawer's fifteen days — s.138 proviso (c).</b> From the drawer's receipt of the notice. The offence is complete only on the day after they expire unpaid, and that day is the cause of action.</li>
+            <li><b>The complaint — s.142(1)(b).</b> One <i>calendar</i> month from the cause of action. Not thirty days: a cause of action arising on 1 February gives a deadline of 1 March, while thirty days would compute 3 March and file out of time.</li>
+            <li><b>The civil suit — Limitation Act, 1963.</b> Three years from the dishonour. It is on the page because a missed criminal window is not necessarily a lost debt.</li>
+          </ol>
+          <p>Where the notice has gone out but the acknowledgement has not come back, service is a guess — and if the drawer in fact received it sooner than assumed, the complaint window closes sooner too. So the tool also computes the deadline on the assumption that the notice arrived the day it was posted, and tells you to work to that. Filing by it is in time whatever the court later finds about service.</p>
+          <details class="assumptions">
+            <summary>Assumptions and figures</summary>
+            <ul id="periodLines"></ul>
+            <ul>
+              <li>The day a period runs <i>from</i> is excluded, under s.9 of the General Clauses Act, 1897.</li>
+              <li>One month is a month of the British calendar, under s.3(35) of the General Clauses Act, 1897: 28, 29, 30 or 31 days. Month arithmetic clamps to the end of the target month, so one month from 31 January is 28 or 29 February and never 2 March.</li>
+              <li>The complaint deadline shown is one month from the expiry of the drawer's fifteen days. The outer limit shown beside it is one month from the cause of action itself, which is the reckoning in <i>Econ Antri Ltd v. Rom Industries Ltd</i>, (2014) 11 SCC 769, affirming <i>Saketh India Ltd v. India Securities Ltd</i>, (1999) 3 SCC 1. Where they differ it is by a day. Work to the earlier one.</li>
+              <li>Days in the post is this tool's assumption and not a statutory period. Replace it with the real date of service the moment the acknowledgement or the tracking record arrives.</li>
+              <li>A deadline falling on a weekend is flagged but not moved. Section 4 of the Limitation Act, 1963 allows a filing on the day the court reopens where the last day falls on a day the court is closed — plan to be early rather than to rely on it.</li>
+              <li>The proviso to s.142(1)(b) lets a court take cognizance after the period on sufficient cause being shown. That is an indulgence to ask for, never a date to plan around.</li>
+            </ul>
+          </details>
+          <div class="note" id="disclaimer">This is a tracker, not legal advice. It computes and prints; it never sends, serves or files anything, and it has no way to. Confirm the current statutory periods and the facts and dates of your own case with an advocate before you act on any date it shows.</div>
+        </div>
+      </section>
+    </div>
+  </main>
+
+  <footer class="foot">
+    <div class="wrap">
+      <span>Open MSME · open-source tool for MSMEs in India &amp; the Philippines · MIT</span>
+      <span><a href="https://sreenivas-sadhu-prabhakara.github.io/openmsme/">All tools</a></span>
+    </div>
+  </footer>
+
+  <script src="assets/app.js"></script>
+</body>
+</html>

@@ -1,0 +1,9 @@
+.DS_Store
+
+# the local data file — your own case records, never committed
+*-data.json
+cheque-case-data.json
+
+# built binaries
+/cheque-case
+/cheque-bounce-s-138-case
